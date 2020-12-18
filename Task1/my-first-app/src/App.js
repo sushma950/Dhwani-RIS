@@ -1,12 +1,14 @@
 import React from "react"
 import './App.css';
-
+import Card from './Card'
 import Pin from './PinComponent'
+import {v4 as uuid} from "uuid"
 export default class App extends React.Component{
   constructor(props){
     super(props)
     this.state={
-      value:''
+      value:'',
+      inputData:[]
     }
   }
 handleChange=(value)=>{
@@ -15,18 +17,43 @@ value:value
 })
 //console.log(this.state.value)
 }
+handleSubmit=(event)=>{
+  event.preventDefault()
+  const {value,inputData} = this.state
+  let currentValue = {
+    id:uuid(),
+    value:value
+  }
+  this.setState({
+    inputData:[...inputData,currentValue]
+  })
+}
+ 
+handleDelete=(id)=>{
+  const {inputData} = this.state
+  let obj = inputData.filter(item=>item.id!==id)
+  
+  this.setState({
+    inputData:obj
+  })
+}
+
   render(){
+    const {inputData} = this.state
     return(
       <>
-      <div >
-Credit Card Input:
-<Pin length={4} onChange={this.handleChange}
+     <div >
+       <h1 style={{marginLeft:"500px"}}>Credit Card Input</h1>
+ <form onSubmit={this.handleSubmit} style={{marginLeft:"500px"}}>
+ <Pin length={4} onChange={this.handleChange}
 />
-<div display="flex">
-<h1>{this.state.value}</h1>
-
-</div>
-</div>
+      <input type="submit" value="submit" />
+      </form>    
+      <div>
+        <Card inputData={inputData} handleDelete={this.handleDelete}/>
+        
+        </div> 
+        </div>
       </>
     )
   }
