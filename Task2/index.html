@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <style type="text/css">
-    .boxes{
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task2</title>
+   <style>
+       .grid{
     display: grid;
     grid-template-columns: auto auto;
     gap: 15px;
-    width:200px;
-    margin: 0 auto;
+    width:230px;
+    margin: 25vh auto;
     justify-items: center;
     position: relative;
 }
@@ -17,38 +21,26 @@
     padding:50px;
     background-color:aqua;
     text-align: center;
-    z-index:1;
+    z-index: 0;
 }
 
 .five{
     position:absolute;
     top: 25%;
-    left: 25%;
+    left: 26%;
 }
-    </style>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task2</title>
-
+   </style>
 </head>
+
 <body>
-    <div class="boxes" id="grid" style="font-weight: 200;">
-        <div class="box" >
-            1
-        </div>
-        <div class="box" >
-            2
-        </div>
-        <div class="box" >
-            3
-        </div>
-        <div class="box" >
-            4
-        </div>
-        <div class="box five" >
-            5
-        </div>
+    <div class="grid" id="grid">
+        <div class="box" >1</div>
+        <div class="box" >2</div>
+        <div class="box" >3</div>
+        <div class="box" >4</div>
+        <div class="box five" style="z-index: 1;">5</div>
     </div>
     <script type="text/javascript" src="index.js"></script>
 </body>
+
 </html>
